@@ -72,6 +72,7 @@ class Quiz {
     print(
         'Quiz over! ${participant.fullName}, you scored ${participant.score} out of ${questions.length}\n');
     showCorrectAnswers();
+    saveUserHistory();
   }
 
   void showCorrectAnswers() {
@@ -81,6 +82,18 @@ class Quiz {
       print(
           'Correct Answer${questions[i].isMultipleChoice ? "s" : ""}: ${questions[i].correctAnswers.join(', ')}\n');
     }
+  }
+  void saveUserHistory() {
+    String fileName = '${Directory.current.path}/QuizHistory.txt';
+    String historyEntry = '${participant.fullName} - '
+        'Score: ${participant.score}/${questions.length} - '
+        'Date: ${DateTime.now()}\n';
+
+    // Append the history entry to the file
+    File file = File(fileName);
+    file.writeAsStringSync(historyEntry, mode: FileMode.append);
+
+    print('Quiz history saved to $fileName.');
   }
 }
 
