@@ -168,7 +168,7 @@ void main() {
   stdout.write('Please enter your last name: ');
   String? lastName = stdin.readLineSync();
 
-  if (firstName != null && lastName != null) {
+  if (firstName != null &&  firstName.isNotEmpty && lastName != null && lastName.isNotEmpty) {
     Participant participant = Participant(firstName, lastName);
     Quiz quiz = Quiz(questions, participant);
     quiz.start();
