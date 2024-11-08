@@ -23,16 +23,16 @@ class Question {
 }
 
 class Participant {
-  String firstName;
-  String lastName;
-  int score = 0;
+  String _firstName;
+  String _lastName;
+  int _score = 0;
 
-  Participant(this.firstName, this.lastName);
+  Participant(this._firstName, this._lastName);
 
-  String get fullName => '$firstName $lastName';
+  String get fullName => '$_firstName $_lastName';
 
   void increaseScore() {
-    score++;
+    _score++;
   }
 }
 
@@ -70,7 +70,7 @@ class Quiz {
     }
 
     print(
-        'Quiz over! ${participant.fullName}, you scored ${participant.score} out of ${questions.length}\n');
+        'Quiz over! ${participant.fullName}, you scored ${participant._score} out of ${questions.length}\n');
     showCorrectAnswers();
     saveUserHistory();
   }
@@ -86,7 +86,7 @@ class Quiz {
   void saveUserHistory() {
     String fileName = '${Directory.current.path}/QuizHistory.txt';
     String historyEntry = '${participant.fullName} - '
-        'Score: ${participant.score}/${questions.length} - '
+        'Score: ${participant._score}/${questions.length} - '
         'Date: ${DateTime.now()}\n';
 
     // Append the history entry to the file
@@ -108,13 +108,13 @@ void main() {
         '4. Mobile app development'
       ],
       [4],
-      false, // This question has multiple correct answers
+      false, 
     ),
     Question(
       'Which framework is commonly associated with Dart for building mobile applications?',
       ['1. React Native', '2. Flutter', '3. Xamarin', '4. Ionic'],
       [2],
-      false, // This question has a single correct answer
+      false, 
     ),
     Question(
       'What is the file extension for Dart source files?',
