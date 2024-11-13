@@ -6,17 +6,14 @@ class Question {
   List<int> correctAnswers;
   bool isMultipleChoice;
 
-  // Constructor with an additional parameter for multiple-choice questions
   Question(this.text, this.options, this.correctAnswers, this.isMultipleChoice);
 
   // Check if the user answer is correct, based on single or multiple choice
   bool isCorrect(List<int> userAnswers) {
     if (isMultipleChoice) {
-      // Sort and compare userAnswers with correctAnswers
       userAnswers.sort();
       return userAnswers.toString() == correctAnswers.toString();
     } else {
-      // Single answer - only one correct answer should be in userAnswers
       return userAnswers.length == 1 && userAnswers[0] == correctAnswers[0];
     }
   }
@@ -69,8 +66,7 @@ class Quiz {
       }
     }
 
-    print(
-        'Quiz over! ${participant.fullName}, you scored ${participant._score} out of ${questions.length}\n');
+    print('Quiz over! ${participant.fullName}, you scored ${participant._score} out of ${questions.length}\n');
     showCorrectAnswers();
     saveUserHistory();
   }
@@ -79,8 +75,7 @@ class Quiz {
     print('Here are the correct answers for each question:\n');
     for (var i = 0; i < questions.length; i++) {
       print('${i + 1}. ${questions[i].text}');
-      print(
-          'Correct Answer${questions[i].isMultipleChoice ? "s" : ""}: ${questions[i].correctAnswers.join(', ')}\n');
+      print('Correct Answer${questions[i].isMultipleChoice ? "s" : ""}: ${questions[i].correctAnswers.join(', ')}\n');
     }
   }
   void saveUserHistory() {
@@ -89,7 +84,6 @@ class Quiz {
         'Score: ${participant._score}/${questions.length} - '
         'Date: ${DateTime.now()}\n';
 
-    // Append the history entry to the file
     File file = File(fileName);
     file.writeAsStringSync(historyEntry, mode: FileMode.append);
 
