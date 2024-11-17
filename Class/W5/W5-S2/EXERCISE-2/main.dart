@@ -31,8 +31,8 @@ class ProfileApp extends StatelessWidget {
         child: ListView(
           children: [
             ProfileCard(profile: ronanProfile),
-            ProfileCard(profile: DaninProfile),
-            ProfileCard(profile: HoloProfile),
+            ProfileCard(profile: daninProfile),
+            ProfileCard(profile: holoProfile),
           ],
         ),
       ),
