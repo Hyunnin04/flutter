@@ -49,6 +49,7 @@ class ProfileCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 8),
+      color: const Color.fromARGB(213, 205, 223, 247),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
