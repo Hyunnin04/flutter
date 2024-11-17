@@ -7,7 +7,10 @@ class ProfileData {
   final List<TileData> tiles;
 
   ProfileData(
-      {required this.name, required this.position, required this.tiles, required this.avatarUrl});
+      {required this.name,
+      required this.position,
+      required this.tiles,
+      required this.avatarUrl});
 }
 
 class TileData {
@@ -15,8 +18,5 @@ class TileData {
   final String title;
   final String value;
 
-  TileData(
-      {required this.icon,
-      required this.title,
-      required this.value});  
+  TileData({required this.icon, required this.title, required this.value});
 }
