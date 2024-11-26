@@ -3,18 +3,17 @@ import 'quiz_app.dart';
 import 'model/quiz.dart';
 
 void main() {
-
   Question q1 = const Question(
       title: "Who is the best teacher?",
-      possibleAnswers: ["ronan", "hongly", 'leangsiv'],
-      goodAnswer: 'ronan');
+      possibleAnswers: ["Ronan", "Hongly", 'Leangsiv'],
+      goodAnswer: 'Ronan');
   Question q2 = const Question(
       title: "Which color is the best?",
-      possibleAnswers: ["blue", "red", 'green'],
-      goodAnswer: 'red');
+      possibleAnswers: ["Blue", "Red", 'Green'],
+      goodAnswer: 'Red');
   Question q3 = const Question(
       title: "What is the capital of France?",
-      possibleAnswers: ["Paris", "Phphnom penh", "Rome", "Singapore"],
+      possibleAnswers: ["Paris", "Phnom penh", "Rome", "Singapore"],
       goodAnswer: 'Paris');
 
   List<Question> myQuestions = [q1, q2, q3];
