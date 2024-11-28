@@ -19,7 +19,6 @@ class QuizApp extends StatefulWidget {
 }
 
 class _QuizAppState extends State<QuizApp> {
-  // Track the current state of the quiz
   QuizState quizState = QuizState.not_started;
   int currentQuestionIndex = 0;
   final Submission submission = Submission();
@@ -28,7 +27,7 @@ class _QuizAppState extends State<QuizApp> {
     setState(() {
       if (state == QuizState.not_started) {
         currentQuestionIndex = 0;
-        submission.removeAnswers(); 
+        submission.removeAnswers();
       }
       quizState = state;
     });
@@ -42,7 +41,7 @@ class _QuizAppState extends State<QuizApp> {
       if (currentQuestionIndex < widget.quiz.questions.length - 1) {
         currentQuestionIndex++;
       } else {
-        switchScreen(QuizState.finished);
+        quizState = QuizState.finished;
       }
     });
   }
@@ -50,31 +49,21 @@ class _QuizAppState extends State<QuizApp> {
   Widget getScreen() {
     switch (quizState) {
       case QuizState.not_started:
-        return WelcomeScreen(
-          onStart: () {
-            setState(() {
-              currentQuestionIndex = 0;
-              submission.removeAnswers(); 
-            });
-            switchScreen(QuizState.started);
-          },
-        );
+        return WelcomeScreen(onStart: () => switchScreen(QuizState.started));
       case QuizState.started:
         return QuestionScreen(
           quiz: widget.quiz,
-          onAnswer: (answer) => onAnswer(answer), 
+          onAnswer: onAnswer,
           currentQuestionIndex: currentQuestionIndex,
         );
       case QuizState.finished:
         return ResultScreen(
           quiz: widget.quiz,
-          submission: submission, 
+          submission: submission,
           onRestart: () => switchScreen(QuizState.not_started),
         );
       default:
-        return WelcomeScreen(
-          onStart: () => switchScreen(QuizState.not_started),
-        );
+        throw Exception("Unhandled Case");
     }
   }
 
