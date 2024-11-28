@@ -3,7 +3,7 @@ import 'package:test_flutter/W7-S2-FLUTTER_QUIZ/lib/model/quiz.dart';
 
 class QuestionScreen extends StatelessWidget {
   final Quiz quiz;
-  final ValueChanged<String> onAnswer;
+  final void Function(String answer) onAnswer;
   final int currentQuestionIndex;
 
   const QuestionScreen({
